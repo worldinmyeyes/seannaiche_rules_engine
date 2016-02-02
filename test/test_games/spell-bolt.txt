@@ -1,0 +1,115 @@
+new
+move 15 12 15 15
+pass 
+pass 
+pass 
+
+move 15 15 10 10
+pass 
+pass 
+pass 
+
+move 10 10 10 9
+pass 
+pass 
+pass 
+
+move 10 9 10 10
+pass 
+pass 
+pass 
+
+move 10 10 15 15
+pass 
+pass 
+pass 
+
+move_special 2 8 0
+pass 
+pass 
+pass 
+
+move 14 4 12 6
+pass 
+pass 
+pass 
+
+move 15 4 1 4
+pass 
+move 0 4 1 4
+pass 
+
+move 12 6 11 7
+pass 
+pass 
+pass
+
+move 11 7 10 7
+pass 
+pass 
+pass 
+
+move 10 7 9 7
+pass 
+pass 
+pass 
+
+move 9 7 8 7
+pass 
+pass 
+pass 
+
+move_special 9 8 7 R
+pass 
+pass 
+pass 
+
+move 15 3 15 4
+pass 
+pass 
+pass
+
+move 15 4 14 4
+pass
+pass
+pass
+
+move 14 4 13 5
+pass
+pass
+pass
+
+move 15 3 15 4 
+pass 
+pass 
+pass  
+
+move 15 15 10 10
+pass 
+move 1 4 15 4
+pass 
+
+move 10 10 10 9
+pass 
+pass 
+pass 
+
+move 10 9 10 10
+pass 
+pass 
+pass 
+
+move 10 10 15 15
+pass 
+pass 
+pass 
+
+move_special 10 R
+pass 
+pass 
+pass 
+
+move 15 3 15 4
+pass 
+pass 
+pass 

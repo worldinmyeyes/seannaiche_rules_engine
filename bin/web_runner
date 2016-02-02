@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+root_dir = "#{File.expand_path(File.dirname(__FILE__))}/.."
+require "#{root_dir}/lib/celtia_rules_engine"
+
+require "sinatra"
+require 'sinatra/cross_origin'
+require "stringio"
+
+configure do
+  enable :cross_origin
+end
+
+set :server, :thin
+
+set :protection, :except => [:path_traversal]
+
+
+#use Rack::Auth::Basic, "Restricted Area" do |username, password|
+#  username == 'celtia_admin01' and password == 'UoACSD1164'
+#end
+
+$c = CeltiaRulesEngine.new(false, false, false)
+
+post '/' do
+  p params
+  sio = StringIO.new
+  $stdout = sio
+  params[:message].split(";").each do |l|
+    $c.handle_line(l)
+  end
+  $stdout = STDOUT
+  sio.string
+end

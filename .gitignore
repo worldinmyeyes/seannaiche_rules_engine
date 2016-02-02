@@ -1,0 +1,7 @@
+/test/output.txt
+/.idea/*
+/pkg/*
+/pkg/*/*
+/pkg/*/*/*
+/pkg/*/*/*/*
+!/pkg/celtia_rules_engine*.gem

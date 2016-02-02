@@ -1,0 +1,105 @@
+====== About
+
+Celtia Rules Engine is a command-line program for validating moves made in the online version of Celtia.  It was created mostly from scratch in Ruby.  Existing Ruby libraries for chess were deemed inadequate.  It runs as both a command-line program (in a terminal or Windows command prompt), printing a text representation of the board after every move, to allow testing it out locally; and as a web server.  At the time of writing, there is a server running at http://celtia-rules-engine.herokuapp.com for testing and demonstration purposes.
+
+Currently, only four players and the standard four-player board are supported.
+
+Classes:
+CeltiaRulesEngine - holds and creates games, interprets commands
+Game - contains all the logic required to play a game
+Board - Creates and returns squares.
+Square - Square on the board, is occupied by a piece.
+Piece - Contains movement vectors and piece characteristics.
+
+====== Build dependencies/Getting the code
+git
+ruby (1.9.3)
+
+1. On Linux:
+mkdir ~/celtia
+cd ~/celtia
+
+Windows:
+Create a new directory and navigate inside it.
+
+2. Linux and Windows:
+
+git clone https://username@bitbucket.org/celtia/seannaiche_rules_engine.git
+
+where "username" is your Bitbucket account name.
+
+Note: Access to the Bitbucket repository (source hosting) is restricted, so without the appropriate permissions, this command won't work.
+
+3. Linux:
+
+cd seannaiche
+
+Windows:
+
+Navigate to the newly created "seannaiche" directory.
+
+4. Linux and Windows
+To start the engine:
+./bin/celtia_rules_engine
+
+To start the web server locally:
+./bin/web_runner
+
+To try out the server running on heroku, install cURL and run:
+
+curl http://celtia-rules-engine.herokuapp.com/ -F "message=new"
+
+or issue any other command by replacing "new" with the desired command.
+
+====== Commands
+
+See command_doc.txt
+
+====== Testing
+
+To run the built-in test game suite:
+
+./bin/celtia_rules_engine   to start the engine.
+
+run_tests   at the prompt.  The engine plays through all the test games it finds in the ./test/test_games directory, and reports back the number of unexpected moves.  Note: moves that the engine should find to be illegal can be marked as such with the move_special_fail command, and these moves then not return errors in the run_tests error report.
+
+
+====== Supported Platforms
+
+Since the Ruby interpreter is cross-platform, it should be possible to run the engine on all platforms supported by Ruby.  It has been confirmed to work on Linux and Windows 7 (though colourisation currently doesn't work on Windows, so the first command issued on Windows should be  "colour 0").
+
+
+====== Known bugs and limitatations
+
+* Seannaiche's can get onto the second level of the hill without Spellhammer.
+* Not all spells are currently functional.  In particular, Shield and Spellhammer.
+* Text colourisation doesn't work on Windows.
+* Error handling is not pretty.
+* Requests are not restricted by domain, for debugging purposes.  Anyone can issue commands to the engine.
+* Takebacks are not functional for every move.  Takeback needs to be done with a more general approach.
+* Spell immunity work quite as it should.  Spells (such as Zap) cannot be cast directly on magic-immune squares or pieces, but spells can enable moves which allow capturing magic-immune pieces.
+
+====== Features
+
+* Understands all piece movements and special rules, including:
+	- Promotions.
+	- Impassable squares, squares that can't be landed on, squares only passable to Bansidh, hill squares (constrained movement due to height), and temple squares.
+	- The extra first move of the Clansman.
+	- The cauldron square.
+* Understands most spells:
+	- Zap (both to kill an enemy piece, and to revive a friendly piece)
+	- Mist
+	- Freeze
+	- Possess
+	- Shapeshift
+	- Flight
+	- Cauldron
+* Can be run as:
+	- a command-line program in a terminal, which prints a colourised text representation of the board after every move;
+	- a web server;
+	- a TCP server listening on an arbitrary port.
+* Supports multiple concurrent games, each identified with a unique game ID.
+* Supports saving and loading games.
+* Includes test game suite for functional (game rules) testing.
+* Can rotate board.
+* Packaged as a gem for easy installation.

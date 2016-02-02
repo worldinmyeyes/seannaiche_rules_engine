@@ -1,0 +1,39 @@
+new 
+move 15 12 15 15
+random_move 
+random_move 
+random_move 
+move 15 15 9 9
+random_move 
+random_move 
+random_move 
+display_moves 
+move 9 9 15 15
+random_move 
+random_move 
+random_move 
+new
+move 15 12 15 15
+random_move 
+random_move 
+random_move 
+move 15 15 9 9
+random_move 
+random_move 
+random_move 
+move 9 9 10 9
+random_move 
+random_move 
+random_move 
+display_moves 
+move_special 2 7 0
+move 10 9 9 9
+random_move 
+random_move 
+random_move 
+move 9 9 15 15
+random_move 
+random_move 
+random_move
+random_move
+move_special 2 4 0

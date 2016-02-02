@@ -1,0 +1,12 @@
+new
+move_special_fail 0 4 14 4 12
+move 14 7 12 7
+pass
+pass
+move 11 14 11 12
+move 15 6 9 12
+pass
+pass
+move 12 15 11 14
+move 9 12 11 14
+move 4 14 4 12

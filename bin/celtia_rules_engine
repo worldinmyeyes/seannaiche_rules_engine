@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+#$LOAD_PATH << "#{File.expand_path(File.dirname(__FILE__))}/../lib"
+require_relative "../lib/celtia_rules_engine"
+
+require "optparse"
+require "socket"
+
+$options = {}
+  
+opt_parser = OptionParser.new do |opt|
+  opt.banner = "Usage: main COMMAND [OPTIONS]"
+  opt.separator  ""
+  opt.separator  "Commands"
+  opt.separator  "     load: load script"
+  opt.separator  ""
+  opt.separator  "Options"
+  
+  opt.on("-h","--help","help") do
+    puts opt_parser
+  end
+    
+  opt.on("-f", "--file FILE", "file") do |file|
+    $options[:file] = file
+  end
+end
+  
+  
+opt_parser.parse!
+  
+case ARGV[0]
+when "load"
+  engine = Engine::CeltiaRulesEngine.new(false, false, false)
+  f = File.open($options[:file], "r")
+  while line = f.gets do
+    engine.handle_line(line)
+  end
+  f.close
+  exit
+when "server"
+  engine = Engine::CeltiaRulesEngine.new(false, false, false)
+  server = TCPServer.open(61835)
+  loop do
+    Thread.start(server.accept) do |client|
+      $stdout = client
+      loop do
+        s = client.gets.chomp
+        if s == "exit"
+          client.close
+        end
+        engine.handle_line(s)
+      end
+    end
+  end
+  exit
+when "commands"
+  puts Engine::CeltiaRulesEngine.commands
+  exit
+end
+
+# start instance of the engine
+engine = Engine::CeltiaRulesEngine.new(true)
+
+exit

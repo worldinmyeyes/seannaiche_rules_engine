@@ -1,0 +1,44 @@
+new
+move 15 12 15 15
+move 8 1 8 3
+move 0 3 0 0
+move 3 15 0 15
+ 
+move 15 15 12 12
+move 12 0 15 0
+move 0 0 5 5
+move 0 15 6 9
+ 
+move 12 12 11 11
+move 15 0 12 3
+move 5 5 6 5
+move 6 9 3 12
+ 
+move 11 11 10 10
+move 12 3 10 5
+move 6 5 10 5
+move 3 12 4 11
+ 
+move 10 10 10 5
+move 8 3 7 4
+move 1 10 3 10
+move 4 11 5 10
+ 
+move 10 5 10 6
+move 7 4 7 5
+move 1 9 2 9
+move 5 10 7 10
+ 
+move 10 6 9 6
+move 7 5 7 6
+move 1 8 3 8
+move 7 10 9 10
+ 
+move 9 6 9 5
+move 7 6 7 7
+move 3 8 4 8
+move 9 10 8 10
+ 
+move 9 5 10 7
+display_moves
+move_special 9 7 7 B

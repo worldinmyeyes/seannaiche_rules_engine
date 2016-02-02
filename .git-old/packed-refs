@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled 
+8ad5c23b0c22204293eb3a26dc2b3aeed7623f05 refs/remotes/origin/master
+375139e462555259f15a530abd2d9e454fe65263 refs/remotes/origin/spellhammer
+ca255058bb727d06a70f2299e8570c24dc100794 refs/remotes/origin/spells-experimental

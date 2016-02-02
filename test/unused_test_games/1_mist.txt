@@ -1,0 +1,17 @@
+new
+move 15 12 15 15
+random_move 
+random_move 
+random_move 
+
+move 15 15 10 10
+random_move 
+random_move 
+random_move 
+
+move 10 10 15 15
+random_move 
+random_move 
+random_move 
+
+move_special 1 14 4
