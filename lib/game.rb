@@ -547,6 +547,7 @@ b0* * s0- - - - - - - - - = = b0"
   
   def side_to_move
     @turn_counter % @players.size
+    $turn_counter = @turn_counter % @players.size
   end
   
   def iterate_move(v, w_old, piece, move_type)
@@ -665,6 +666,7 @@ b0* * s0- - - - - - - - - = = b0"
   def to_move
     puts "#{@players[side_to_move].to_s.colorize(@players[side_to_move].color, @colourised)} to move."
     @message_log.push "#{@players[side_to_move].to_s.colorize(@players[side_to_move].color, @colourised)} to move."
+    puts $turn_counter.to_s
   end
   
   def random_move
@@ -702,6 +704,7 @@ b0* * s0- - - - - - - - - = = b0"
   def next_turn(n)
     if n>=1
       @turn_counter += n
+      
       @active_spells.clear
       @players[side_to_move].piece_list.each do |p|
         p.set_vecs
