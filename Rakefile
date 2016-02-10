@@ -80,3 +80,10 @@ desc 'Clear out RDoc and generated packages'
 task :clean => [:clobber_rdoc, :clobber_package] do
   rm "#{spec.name}.gemspec"
 end
+
+desc "Run rules_engine"
+task :rules_engine do
+  # Your code goes here
+  ruby "bin/celtia_rules_engine"
+  s[0] == "exit"
+end
