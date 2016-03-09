@@ -21,11 +21,13 @@ class Square
     @misted_piece = nil
     @magic_immune = false
     @frozen = false
-    @shielded = nil
+    @shielded = false
     @possess_protected = false
     @mist_spell_owner = nil
+    @shield_spell_owner = nil
   end
   
+  #will be used for shielding
   def blocked?
     not (@landable or @passable)
   end
@@ -96,6 +98,12 @@ class Square
     end
     @piece = nil
     @mist_spell_owner = player
+  end
+  
+  #code for modifying square to be shielded with a Shield square for one turn
+  def make_shielded(player)
+    @piece.shielded = true
+    @shield_spell_owner = player
   end
   
   def misted?

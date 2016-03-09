@@ -274,6 +274,7 @@ b0* * s0- - - - - - - - - = = b0"
       if p.square.equal?(@board.cauldron) and p.is_a?(Clansman) and not move.is_a?(PromoteMove)
         unplace_piece(p.square)
       end
+      #check if move.is_capture and move.captured_piece.
       if not move.player.waiting_pieces.empty? and move.from_square.is_a?(SeannaicheTempleSquare) and move.from_square.owner.equal?(move.player) and not move.player.mercenary
         r = move.player.waiting_pieces.shift
         place_piece(move.from_square, r)
@@ -427,9 +428,12 @@ b0* * s0- - - - - - - - - = = b0"
         end
       end
       if player.spells[:mist] >= 1 || @active_spells_considered.include?(:cauldron)
-        @board.flattened.each do |s|
-          if not s.magic_immune and s.occupied?
-            player.available_moves.push MistMove.new(s, player)
+        #@board.flattened.each do |s|
+        @piece_list.each do |p|
+          #binding.pry
+          if p.square and p.square.occupied? and (not p.magic_immune or p.square.magic_immune)
+        #  if not s.magic_immune and s.occupied?
+            player.available_moves.push MistMove.new(p.square, player)
           end
         end
       end
@@ -670,7 +674,9 @@ b0* * s0- - - - - - - - - = = b0"
   end
   
   def random_move
-    make_move(@players[side_to_move].available_moves.sample)
+    random = (@players[side_to_move].available_moves.length)
+    make_move(@players[side_to_move].available_moves[rand(random)])
+    #make_move(@players[side_to_move].available_moves.#)
     ready_for_move
   end
   

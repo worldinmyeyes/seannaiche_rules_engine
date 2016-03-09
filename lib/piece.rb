@@ -5,7 +5,7 @@ module Engine
 class Piece
   
   attr_reader :collects_spells, :magic_immune
-  attr_accessor :moved, :available_moves, :square, :active, :mov_vecs, :cap_vecs, :extends_movement, :extends_movement2, :extends_captures, :owner, :mov_vecs2, :first_mov_vecs, :first_cap_vecs, :extends_captures2, :mercenary
+  attr_accessor :moved, :available_moves, :square, :active, :mov_vecs, :cap_vecs, :extends_movement, :extends_movement2, :extends_captures, :owner, :mov_vecs2, :first_mov_vecs, :first_cap_vecs, :extends_captures2, :mercenary, :shielded
   
   def initialize(square, player)
     @moved = false
@@ -21,6 +21,7 @@ class Piece
     @can_enter_cauldron = false
     @collects_spells = false
     @magic_immune = false
+    #@shielded = false
     @active = true
     @mercenary = false
   end
