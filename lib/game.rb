@@ -428,19 +428,25 @@ b0* * s0- - - - - - - - - = = b0"
         end
       end
       if player.spells[:mist] >= 1 || @active_spells_considered.include?(:cauldron)
+        # Woj Zscz: changed restriction of spell on all non-magic immune pieces
         #@board.flattened.each do |s|
         @piece_list.each do |p|
-          #binding.pry
-          if p.square and p.square.occupied? and (not p.magic_immune or p.square.magic_immune)
-        #  if not s.magic_immune and s.occupied?
+          #if not s.magic_immune and s.occupied?
+          if (p.square && p.square.occupied? && p.magic_immune == false && p.square.magic_immune == false)
+          #changed s to p.square
             player.available_moves.push MistMove.new(p.square, player)
           end
         end
       end
-        if player.spells[:freeze] >= 1 || @active_spells_considered.include?(:cauldron)
-        @board.flattened.each do |s|
-          if not s.magic_immune and not friendly_occupied?(s,player)
-            player.available_moves.push FreezeMove.new(s, player)
+      if player.spells[:freeze] >= 1 || @active_spells_considered.include?(:cauldron)
+        # Woj Zscz: changed restriction of spell on all non-magic immune pieces
+        #@board.flattened.each do |s|
+        @piece_list.each do |p|
+          # if not s.magic_immune and not friendly_occupied?(s,player)
+          if (p.square && p.square.occupied? && p.magic_immune == false && p.square.magic_immune == false)
+          # if p.square and p.square.occupied? 
+            #changed s to p.square
+            player.available_moves.push FreezeMove.new(p.square, player)
           end
         end
       end
